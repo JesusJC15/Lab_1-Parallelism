@@ -97,21 +97,46 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 La estrategia de paralelismo antes implementada es ineficiente en ciertos casos, pues la búsqueda se sigue realizando aún cuando los N hilos (en su conjunto) ya hayan encontrado el número mínimo de ocurrencias requeridas para reportar al servidor como malicioso. Cómo se podría modificar la implementación para minimizar el número de consultas en estos casos?, qué elemento nuevo traería esto al problema?
 
-
+- Para minimizar las consultas innecesarias, se puede introducir un contador de ocurrencias compartido entre los hilos y hacer que cada hilo termine su ejecución prematuramente si el número de ocurrencias ya alcanzó el umbral. Esto introduce la necesidad de sincronización y control de concurrencia, haciendo el problema más complejo pero más eficiente.
 
 **Parte III - Evaluación de Desempeño**
 
 A partir de lo anterior, implemente la siguiente secuencia de experimentos para realizar las validación de direcciones IP dispersas (por ejemplo 202.24.34.55), tomando los tiempos de ejecución de los mismos (asegúrese de hacerlos en la misma máquina):
 
 1. Un solo hilo.
+
+Uso del procesador: 1.7%
+Uso de memoria: 38 MB
+
 2. Tantos hilos como núcleos de procesamiento (haga que el programa determine esto haciendo uso del [API Runtime](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html)).
+
+Uso del procesador: 3.2%
+Uso de memoria: 56 MB
+
 3. Tantos hilos como el doble de núcleos de procesamiento.
+
+Uso del procesador: 2.1%
+Uso de memoria: 20 MB
+
 4. 50 hilos.
+
+Uso del procesador: 3.0%
+Uso de memoria: 24 MB
+
 5. 100 hilos.
+
+Uso del procesador: 0.5%
+Uso de memoria: 20 MB
 
 Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las pruebas, revise y anote el consumo de CPU y de memoria en cada caso. ![](img/jvisualvm.png)
 
+- Visualización en VisualVM para todas las pruebas:
+![](img/visualvm.png)
+
 Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):
+
+![](img/datos.png)
+![](img/grafica.png)
 
 **Parte IV - Ejercicio Black List Search**
 
