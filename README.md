@@ -1,8 +1,10 @@
 
 ### Escuela Colombiana de Ingeniería
 ### Arquitecturas de Software - ARSW
+### Integrantes:
+- Natalia Espitia Espinel
+- Jesús Alberto Jauregui Conde
 ## Ejercicio Introducción al paralelismo - Hilos - Caso BlackListSearch
-
 
 ### Dependencias:
 ####   Lecturas:
@@ -16,11 +18,29 @@
 **Parte I - Introducción a Hilos en Java**
 
 1. De acuerdo con lo revisado en las lecturas, complete las clases CountThread, para que las mismas definan el ciclo de vida de un hilo que imprima por pantalla los números entre A y B.
+
+![](img/punto1.png)
+
 2. Complete el método __main__ de la clase CountMainThreads para que:
 	1. Cree 3 hilos de tipo CountThread, asignándole al primero el intervalo [0..99], al segundo [99..199], y al tercero [200..299].
+
+	![](img/punto2.png)
+
 	2. Inicie los tres hilos con 'start()'.
-	3. Ejecute y revise la salida por pantalla. 
+
+	![](img/punto3.png)
+
+	3. Ejecute y revise la salida por pantalla.
+
+	![](img/punto4a.png) ![](img/punto4b.png) ![](img/punto4c.png)
+
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
+
+	![](img/punto5d.png)
+
+	![](img/punto5a.png) ![](img/punto5b.png) ![](img/punto5c.png)
+
+	Con start() se muestra una salida en paralelo lo que hace que los números mostrados esten intercalado, mientras que con run() se ejecuta en el hilo principal por lo que la salida se muestra de forma secuencial y ordenada.
 
 **Parte II - Ejercicio Black List Search**
 
